@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script> -->
+<!-- <script src="./jquery-3.6.1.min.js"></script> -->
+<script src="./jquery-3.0.0.min.js"></script>
+  <script src="./jquery-3.1.1.min.js"></script>
+  <script src="./jquery-3.6.1.min.js"></script>
+
+<script src="./config.js"></script>
+
+<head>
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+    <div id="topBox">
+    </br>
+    <div id="index">
+        <p>Onion的文件根目录:</p>
+    </div>
+    <div id="container">
+        <div id="box1">
+            <ul id="ul">
+            </ul>
+        </div>
+        <div id="box2">
+            <ul id="ul2">
+            </ul>
+        </div>
+    </div>
+    <div id="container2">
+        <div id="box3">
+    
+        </div>
+        <div id="box4">
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    #topBox{
+        display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    }
+    /* #container{ 
+        display: flex;
+        justify-content: space-around;
+    } */
+    #container2{
+        /* display: flex; */
+        float: right;
+        /* justify-content: space-around; */
+    }
+    /* #box1 {
+        float: left;
+    }
+
+    #box2 {
+        float: right;
+    } */
+    #index{
+        /* display: flex; */
+        justify-content: space-around;
+    }
+
+</style>
+<script>
+
+    var ul = document.getElementById('ul')
+    var ul2 = document.getElementById('ul2')
+    var box3 = document.getElementById('box3')
+    var results
+
+    // box3.innerHTML = `<span><a href="${cpolarURL}"><--回去传<b>公网文件</b></a></span>`
+    box4.innerHTML = `<span><a href="${localURL}"><--回去传<b>局域网</b>文件</a></span>`
+
+    $.ajax({
+        url: `${localURL}/fileInfo`,
+        type: "post",
+        async: false,
+        success: function (result) {
+            results = result
+            // console.log(results);
+        }
+    })
+    // console.log(results);
+    console.log(cpolarURL);
+    // ul.innerHTML=`<a href="http://5174c78a.cpolar.top/">${results}</a>`
+    // var str = "";
+    // for (let i = 0; i < results.length; i++) {
+    //     str += `
+    //     <a class='content_Inside' href="${cpolarURL}/${results[i]}">${results[i]}</a><br>
+    //     `;
+
+    // }
+    // ul.innerHTML = '<p>公网下载</p>' + str;
+    var str2 = "";
+    for (let i = 0; i < results.length; i++) {
+        str2 += `
+        <a class='content_Inside' href="${localURL}/${results[i]}">${results[i]}</a><br>
+        `;
+
+    }
+    ul2.innerHTML = '<p>局域网下载</p>' + str2;
+
+
+
+</script>
+
+</html>
