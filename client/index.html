@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!-- 网页主index -->
+<html lang="zh">
+  <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script> -->
+  <script src="./jquery-3.0.0.min.js"></script>
+  <script src="./jquery-3.1.1.min.js"></script>
+  <script src="./jquery-3.6.1.min.js"></script>
+  <script src="./qrcode.js"></script>
+  <script src="./moveQr.js"></script>
+  <script src="./config.js"></script>
+  <script src="./alert.js"></script>
+<head>
+  <!-- <meta http-equiv="content-type" content="text/html; charset=gb2312"> -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> -->
+  
+  <meta charset="utf-8">
+  <title>Onion文件中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+</head>
+
+
+<style>
+  /* alert 框css */
+.alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+ /* alert 框css */
+  #formList {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+
+  input[type=file] {
+    width: 100%;
+    height: 50px;
+    padding: 182px 31px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 25px;
+    background-color: rgb(233, 233, 233);
+  }
+
+  input[type=button] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  input[type=button]:hover {
+    background-color: #45a049;
+  }
+
+ 
+  span {
+    font-size: 22px;
+  }
+
+  #fileInfo {
+    width: 100%;
+
+  }
+
+  #fileIndexPage {
+    float: left;
+  }
+
+  #fileIndexPage_local {
+    float: left;
+  }
+
+  #progress {
+    width: 100%;
+    height: 20px;
+  }
+  /*响应式布局 */
+    @media only screen and (min-width: 450px) and (max-width: 700px) {
+    #qrcode{
+      position: absolute;
+      top: 27%;
+      left: 72%;
+        
+    }
+    }
+    @media only screen and (min-width: 700px) and (max-width: 900px){
+      #qrcode{
+        position: absolute;
+    top: 27%;
+    left: 80%;
+        
+    }
+    }
+    @media only screen and (min-width: 900px) {
+      #qrcode{
+        position: absolute;
+    top: 27%;
+    left: 86%;
+        
+    }
+    }
+    @media only screen and (max-width:450px) {
+      #qrcode{
+        position: absolute;
+        top: 28%;
+        left: 57%;
+      }
+    }
+    textarea{
+      width: 98%;
+      resize: vertical;
+      padding: 4px 8px;
+    }
+ 
+</style>
+
+<body>
+  <!-- <div id="formDate">
+    
+  </div>
+<div id="fileIndexPage">
+    
+  </div>
+  <div id="fileIndexPage_local">
+    
+  </div> -->
+  <textarea spellcheck="false" name="textA" id="textBox" cols="90%" rows="4" placeholder='"请输入剪切板内容，按Ctrl+S键以保存，PS:保存成功的提示在控制台"'></textarea>
+  <progress id="progress" value="0" max="100"></progress>
+  <div id="formList">
+
+  </div>
+  <div id="fileIndexPage">
+
+  </div>
+  <div id="fileIndexPage_local">
+
+  </div>
+  <div id="qrDiv">
+    <div id="qrcode"></div>
+  </div>
+
+
+</body>
+
+
+<script type="text/javascript">
+  
+  </script>
+<script>
+  
+    // #####################################
+    //内容动态填充
+    var formList = document.getElementById('formList')
+    var fileIndexPage = document.getElementById('fileIndexPage')
+    var textBox = document.getElementById('textBox')
+
+    formList.innerHTML = `<form id="form_abroad" action="${cpolarURL}/fs/file" method="post" enctype="multipart/form-data">
+      <span id="links">局域网文件传输：</span>
+      <input id="form_input1" type="file" name="f1" multiple="multiple"/><br>
+      <input type="button"  id="submit_abroad" value="上传">
+    </form>
+    `
+    // fileIndexPage.innerHTML = `<span><a id="fileInfo" href="${cpolarURL}/fileIndex.html">---->点我进入<b>公网</b>文件目录</a></sapn>`
+    fileIndexPage_local.innerHTML = `<span><a id="fileInfo" href="${localURL}/fileIndex.html">点我进入<b>局域网</b>文件目录----></a></span>`
+    textBox.value =`${textArea}`
+    // #####################################
+
+    //二维码显示
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: `${localURL}`,
+      width: 128,
+      height: 128,
+      colorDark: "#000000",
+      colorLight: "rgb(233, 233, 233)",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    document.querySelector('img').style.borderRadius = "3px"
+    document.querySelector('img').addEventListener("mousedown", e => {
+        e.preventDefault()
+    })
+
+    //文本传输
+    document.getElementById('qrcode').addEventListener('dblclick',()=>{
+      $.ajax({
+              url: `${localURL}/changeText`,
+              type: "post",
+              data: { input: `${textBox.value}` },
+              dataType: "text",
+              async: false,
+              success:
+                function (result) {
+                  success_prompt(result,1000);
+                },
+              error:
+                function (err) {
+                  console.log(err);
+                }
+            });
+    })
+        document.onkeydown = function (e) {
+          var keyNum = window.event ? e.keyCode : e.which;
+
+          if (83 == keyNum && e.ctrlKey) {
+            e.preventDefault();
+            $.ajax({
+              url: `${localURL}/changeText`,
+              type: "post",
+              data: { input: `${textBox.value}` },
+              dataType: "text",
+              async: false,
+              success:
+                function (result) {
+                  success_prompt(result,1000);
+                },
+              error:
+                function (err) {
+                  console.log(err);
+                }
+            });
+          }
+        }
+
+
+
+   //#####################################
+  {
+    //文件ajax传输
+    const form_input1 = document.querySelector('#form_input1');
+    var formData
+    // 监听 change 事件
+    form_input1.addEventListener('change', function () {
+      // 使用 formData 装载 file
+      formData = new FormData();
+      for (let i = 0; i <= this.files.length - 1; i++){
+          let file = this.files[i];
+            // 添加文件到formData
+          formData.append('files['+i+']', file, file.name);
+          // formData.append('file', this.files[0]);
+        }
+    })
+    document.getElementById('submit_abroad').addEventListener('click', () => {
+      if (form_input1.files[0]) {
+        upload(formData);
+      }
+      else {
+        alert('你还没选择任何文件捏！')
+      }
+    })
+
+    //upload function
+    const upload = (formData) => {
+      $.ajax({
+        type: 'post',
+        url: `${localURL}/file`,
+        data: formData,
+        processData: false,
+        contentType: false,
+        // 监听 xhr
+        xhr: function () {
+          const xhr = $.ajaxSettings.xhr();
+          if (xhr.upload) {
+            xhr.upload.addEventListener('progress', e => {
+              const { loaded, total } = e;
+              var progress = (loaded / total) * 100;
+              document.querySelector('#progress').setAttribute('value', progress);
+            },
+              false
+            );
+            return xhr;
+          }
+        },
+        success: function (result) {
+          $('#form_input1')[0].value=null //清空
+          console.log(result);
+          result=JSON.parse(result)
+          console.log(result);
+          if (result.status == 0) {
+            // window.location = `${localURL}/success.html` //未存在
+            success_prompt(result.msg,2000);
+          }
+          if (result.status == 1) {
+            // window.location = `${localURL}/success_2.html` //已存在重命名
+            success_prompt(result.msg,2000);
+          }
+        }
+      });
+    }
+  }
+</script>
+<script>
+// var formDate = document.getElementById('formDate')
+// var fileIndexPage = document.getElementById('fileIndexPage')
+// formDate.innerHTML=`<form action="${cpolarURL}/file" method="post" enctype="multipart/form-data">
+//       <span>文件传输：</span>
+//       <input type="file" name="f1" /><br>
+
+//       <input type="submit" value="上传">
+//     </form>
+//     <form action="${localURL}/file" method="post" enctype="multipart/form-data">
+//       <span>局域网文件传输：</span>
+//       <input type="file" name="f1" /><br>
+   
+//       <input type="submit" value="局域网上传">
+//     </form>`
+//     fileIndexPage.innerHTML=`<span><a id="fileInfo" href="${cpolarURL}/fileIndex.html">---->点我进入<b>公网</b>文件目录</a></sapn>`
+//     fileIndexPage_local.innerHTML=`<span><a id="fileInfo" href="${localURL}/fileIndex.html"><----点我进入<b>局域网</b>文件目录</a></span>`
+
+      
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body style="
+                        background: linear-gradient(45deg, #FFDDEE, skyblue);
+                    ">
+    <div style="
+                        text-align: center; /*让div内部文字居中*/
+                        background-color: #ffffff2e;
+                        border-radius: 20px;
+                        width: 369px;
+                        height: 250px;
+                        margin: auto;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                    ">
+        <span>
+            <p style="
+                        position: relative;
+                        top: 89px;
+                        left: 7px;
+                        right: 0;
+                        bottom: 0;
+                    ">文件名存在,已重覆盖！</p>
+        </span>
+
+    </div>
+</body>
+<script>
+    setTimeout(() => { window.history.go(-1) }, 1000)
+
+</script>
+
+</html>

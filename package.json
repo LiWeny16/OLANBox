@@ -1,0 +1,29 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "description": "Onion_file_system ",
+  "main": "main.js",
+  "scripts": {
+    "start": "chcp 65001 && electron .",
+    "pack-win": "electron-packager . OLANbox --win --out ../OLANbox --arch=x64 --app-version=1.5.1 --electron-version=21.1.0",
+    "pack-mac": "electron-packager . OLANbox --platform=darwin --out ../OLANbox-MAC --arch=x64 --app-version=1.5.1 --electron-version=21.1.0 "
+  },
+  "keywords": [
+    "OLANbox"
+  ],
+  "author": "Onion",
+  "license": "Mozilla Public License 2.0",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^6.0.0",
+    "http-server": "^14.1.1",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "node-notifier": "^10.0.1"
+  },
+  "devDependencies": {
+    "electron": "^21.1.0"
+  }
+}
