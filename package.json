@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "chcp 65001 && electron .",
-    "pack-win": "electron-packager . OLANbox --win --out ../OLANbox --arch=x64 --app-version=1.5.1 --electron-version=21.1.0",
-    "pack-mac": "electron-packager . OLANbox --platform=darwin --out ../OLANbox-MAC --arch=x64 --app-version=1.5.1 --electron-version=21.1.0 "
+    "pack-win": "electron-packager . OLANbox --win --out ../OLANbox --arch=x64 --app-version=1.6.1 --electron-version=21.1.0 --icon=./favicon.icon",
+    "pack-mac": "electron-packager . OLANbox --platform=darwin --out ../OLANbox-MAC --arch=x64 --app-version=1.6.1 --electron-version=21.1.0 "
   },
   "keywords": [
     "OLANbox"

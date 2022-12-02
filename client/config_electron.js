@@ -1,5 +1,5 @@
 //electronPort指的是electron第一次前端获取的时候选择的端口，不方便动态读取
-var electronPort=8189
+var electronPort=80
 var Ip=0
 var Port=0
 var cpolarURL=0

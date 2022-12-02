@@ -1,5 +1,5 @@
 # Onion 的LAN 软件
-开源协议：<b>Mozilla Public License 2.0<b>
+开源协议：<b>GPL<b>
 ## 用法：
 1. Windows exe小窗口：ctrl+S 保存文本，ctrl+G 刷新文本 ; 网页端：ctrl+S 保存，ctrl + R 刷新文本 ;手机端：双击二维码即可保存文本
 2. 关于文件传输，桌面端点击二维码，即可打开网页传输，手机端扫码即可！<font color='red'> 注意 </font>：必须在同一个WiFi(局域网可通信网段)下
@@ -34,9 +34,12 @@ v1.5.1
 添加多文件上传功能   
 ~~TODO:promise重构回调地狱~~
 
+v1.6.1
+用AutoCad2016绘制了图标！！
+美工设计:Onion && Tsjinsins
 -------------------
 
 Author：Bigonion  
 Email：a454888395@gmail.com  
 Websites:bigonion.xyz
-
+Design:Bigonion && Tsjinsins

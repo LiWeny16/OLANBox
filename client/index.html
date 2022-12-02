@@ -93,7 +93,7 @@
     font-size: 20px;
   }
 
-  input[type=submit] {
+  /* input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
     color: rgb(255, 255, 255);
@@ -107,10 +107,11 @@
 
   input[type=submit]:hover {
     background-color: #45a049;
-  }
+  } */
 
   input[type=button]:hover {
     background-color: #45a049;
+    
   }
 
  
@@ -336,12 +337,12 @@
           result=JSON.parse(result)
           console.log(result);
           if (result.status == 0) {
-            // window.location = `${localURL}/success.html` //未存在
-            success_prompt(result.msg,2000);
+            window.location = `${localURL}/success.html` //未存在
+            // success_prompt(result.msg,2000);
           }
           if (result.status == 1) {
-            // window.location = `${localURL}/success_2.html` //已存在重命名
-            success_prompt(result.msg,2000);
+            window.location = `${localURL}/success_2.html` //已存在重命名
+            // success_prompt(result.msg,2000);
           }
         }
       });
