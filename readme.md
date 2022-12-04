@@ -4,19 +4,17 @@
 1. Windows exe小窗口：ctrl+S 保存文本，ctrl+G 刷新文本 ; 网页端：ctrl+S 保存，ctrl + R 刷新文本 ;手机端：双击二维码即可保存文本
 2. 关于文件传输，桌面端点击二维码，即可打开网页传输，手机端扫码即可！<font color='red'> 注意 </font>：必须在同一个WiFi(局域网可通信网段)下
 3. 配置文件在resources,可以打开找到uploadFiles文件夹自行建立快捷方式到桌面，emm因为确实不会建立相对路径的快捷方式，查了好久，只找到VBS的bat方法
-## 关于：
+## 介绍：
 1. 项目基于Node.js环境的JavaScript前后端实现,前端当然只是普通的前端...
-2. 项目基于GitHub开发的的electron@21.1.0 node_modules实现
+2. 项目基于GitHub开发的的electron@21.1.0 实现
 3. Vscode,Team,utools,Hyper,Slack,Atom,支付宝蚂蚁小程序，等许多应用都是基于electron实现的,electron并不冷门
-4. 因为chromev8的缘故，electron速度非常快，相对的代价就是内存占用较高
+4. 因为chromev8的缘故，electron速度很快，相对的代价就是体积内存占用较高
 
 ### ~~什么？有BUG？ Sorry啊, 就是不修！~~
 
 
 
-
--------------------
-更新日志：  
+## 更新日志
 v1.0.0-v1.2.2  
 demo版本  
 v1.2.3  
@@ -33,12 +31,18 @@ v1.4.4
 v1.5.1  
 添加多文件上传功能   
 ~~TODO:promise重构回调地狱~~
-
-v1.6.1
+<font size =2>v1.6.1
 用AutoCad2016绘制了图标！！
-美工设计:Onion && Tsjinsins
+美工设计:Onion && Tsjinsins</font>
+
 -------------------
 
+
+## 下载链接
+1. 项目链接：<br>[https://github.com/LiWeny16/OLANBox](https://github.com/LiWeny16/OLANBox)</br>
+2. 下载链接：[https://github.com/LiWeny16/OLANBox/releases/download/v1.6.1/OLANbox.zip](https://github.com/LiWeny16/OLANBox/releases/download/v1.6.1/OLANbox.zip)
+
+## 关于
 Author：Bigonion  
 Email：a454888395@gmail.com  
 Websites:bigonion.xyz
