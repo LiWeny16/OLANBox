@@ -20,36 +20,38 @@
 
 ## 🌈更新日志
 
-v1.0.0-v1.2.2demo版本
+v1.0.0-v1.2.2<br>
+demo版本
 
-v1.2.3修复手机端bug
+v1.2.3<br>
+修复手机端bug
 
-v1.3.3增加保存,刷新提示
+v1.3.3<br>
+增加保存,刷新提示
 
-v1.4.3
-
+v1.4.3<br>
 1. 移除win端移动二维码，改为自适应，提升窗口适配能力
 2. 更改jQuery 为本地源,不依赖用户网络环境
 
-v1.4.4
+v1.4.4<br>
 修复端口问题
 
-v1.5.1添加多文件上传功能~~TODO:promise重构回调地狱~~
+v1.5.1<br>添加多文件上传功能~~TODO:promise重构回调地狱~~
 
-v1.6.1
+v1.6.1<br>
 用AutoCad2016绘制了图标！！
 美工设计:Onion && Tsjinsins
 
 ## 🧐下载链接
 
-1. 项目链接:
+1. 项目链接:<br>
     [https://github.com/LiWeny16/OLANBox](https://github.com/LiWeny16/OLANBox)
-2. 下载链接:
+2. 下载链接:<br>
     [https://github.com/LiWeny16/OLANBox/releases/download/v1.6.1/OLANbox.zip](https://github.com/LiWeny16/OLANBox/releases/download/v1.6.1/OLANbox.zip)
 
 ## 🐟关于
 
-Author：Bigonion
-Email：[email]a454888395@gmail.com[/email]
-Websites:bigonion.xyz
-Design:Bigonion && Tsjinsins
+Author：Bigonion<br>
+Email：[email]a454888395@gmail.com[/email]<br>
+Websites:bigonion.xyz<br>
+Design:Bigonion && Tsjinsins<br>
