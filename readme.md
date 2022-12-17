@@ -42,6 +42,10 @@ v1.6.1<br>
 用AutoCad2016绘制了图标！！
 美工设计:Onion && Tsjinsins
 
+v1.7.2<br>
+1. 修复bug
+2. 增加焦点自动复制功能
+
 ## 🧐下载链接
 
 1. 项目链接:<br>
@@ -55,3 +59,6 @@ Author：Bigonion<br>
 Email：[email]a454888395@gmail.com[/email]<br>
 Websites:bigonion.xyz<br>
 Design:Bigonion && Tsjinsins<br>
+
+## 💎开源协议
+MPL2.0

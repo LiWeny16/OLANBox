@@ -13,6 +13,7 @@
   <script src="./client/config_electron.js"></script>
   <script src="./links.js"></script>
   <script src="./client/alert.js"></script>
+  <script src="./client/clipboard.js"></script>
   <!-- <script src="./main.js"></script> -->
 <head>
   <!-- <meta http-equiv="content-type" content="text/html; charset=gb2312"> -->
@@ -207,7 +208,7 @@
 
 <body>
 
-  <textarea spellcheck="false" name="textA" id="textBox" cols="90%" rows="4"
+  <textarea spellcheck="false" onfocus="copyIt(document.getElementById('textBox').value)" name="textA" id="textBox" cols="90%" rows="4"
     placeholder='"请输入剪切板内容，按Ctrl+S键以保存，查看和下载文件请同一网段下扫码，或到浏览器输入“你的IPv4地址”以查看"'></textarea>
   <progress id="progress" value="0" max="100"></progress>
   <div id="bigBox">

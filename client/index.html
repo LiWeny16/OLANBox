@@ -10,6 +10,7 @@
   <script src="./moveQr.js"></script>
   <script src="./config.js"></script>
   <script src="./alert.js"></script>
+  <script src="./clipboard.js"></script>
 <head>
   <!-- <meta http-equiv="content-type" content="text/html; charset=gb2312"> -->
   <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
@@ -36,6 +37,7 @@
     text-align: center;
     padding: 15px;
     border-radius: 3px;
+    caret-color: transparent;
 }
 
 .alert-success {
@@ -186,7 +188,7 @@
   <div id="fileIndexPage_local">
     
   </div> -->
-  <textarea spellcheck="false" name="textA" id="textBox" cols="90%" rows="4" placeholder='"请输入剪切板内容，按Ctrl+S键以保存，PS:保存成功的提示在控制台"'></textarea>
+<textarea spellcheck="false" name="textA" onfocus="copyIt(document.getElementById('textBox').value)"  id="textBox" cols="90%" rows="4" placeholder='"请输入剪切板内容，按Ctrl+S键以保存，PS:保存成功的提示在控制台"'></textarea>
   <progress id="progress" value="0" max="100"></progress>
   <div id="formList">
 
@@ -197,7 +199,7 @@
   <div id="fileIndexPage_local">
 
   </div>
-  <div id="qrDiv">
+  <div id="qrDiv" >
     <div id="qrcode"></div>
   </div>
 
@@ -348,6 +350,11 @@
       });
     }
   }
+
+  //剪切板
+ // $(document).ready(()=>{copyIt(document.getElementById(`textBox`).value)})
+  
+ // copyIt(document.getElementById(`textBox`).value)
 </script>
 <script>
 // var formDate = document.getElementById('formDate')
